@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+<body ng-app='products'>
+	<div ng-controller='pdctrl'>
+		Sort By:<select ng-model='sortval'>
+			<option value="" selected disabled hidden>--Select An Option--</option>
+			<option value="price">price:Low To High</option>
+			<option value="-price">price:High To Low</option>
+			<option value="-launchDate">Newest Arrivals</option>
+		</select>
+		<div ng-repeat="x in products  | orderBy:sortval">
+			<h3>{{x.pName}}</h3>
+			<img src={{x.pImgUrl}}>
+			<label style="font-weight: bold;">RS:{{x.price}}</label>
+		</div>	
+	</div>
+</body>
+<script>
+	
+	var app = angular.module('products',[]);
+	
+	app.controller('pdctrl',function($scope){
+		$scope.products = [
+			{pId:124896,pName:'HP 21.5 inch (54.6 cm) LED Monitor - Full HD, IPS Panel with VGA, HDMI Ports - 22W (Black)',pImgUrl:'https://images-eu.ssl-images-amazon.com/images/I/51g+psRgGNL._AC_US218_FMwebp_QL70_.jpg',launchDate:'23-11-2018',price:12000},
+			{pId:784653,pName:'Micromax Monitor MM195HHDM165 19.5 Inch With VGA + HDMI Port',pImgUrl:'https://images-eu.ssl-images-amazon.com/images/I/51rv251oCYL._AC_US218_FMwebp_QL70_.jpg',launchDate:'05-10-2016',price:11000},
+			{pId:655936,pName:'Acer 18.5 inch (46.99 cm) LED Monitor - EB192Q (Black)',pImgUrl:'https://images-eu.ssl-images-amazon.com/images/I/41MSAbtN60L._AC_US218_FMwebp_QL70_.jpg',launchDate:'01-01-2017',price:10000},
+			{pId:124,pName:'Samsung 18.5 inch (46.9 cm) LED Monitor - HD Ready, AH-IPS Panel with VGA Port - LS19F350HNWXXL (Black)',pImgUrl:'https://images-eu.ssl-images-amazon.com/images/I/51vQoTgPckL._AC_US218_FMwebp_QL70_.jpg',launchDate:'04-02-2014',price:16000}
+		];
+	});
+	
+
+
+</script>
+</html>

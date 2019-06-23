@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script type="text/javascript">
+		var app = angular.module("myApp",[]);
+		app.controller("ctrl",function(){
+			$scope.uname;
+			console.log($scope.uname); // It wont print
+		})
+	</script>
+</head>
+<body>
+<div ng-app="myApp">
+	<div ng-controller="ctrl">
+		Value:<input type="text" ng-model="uname">
+	</div>
+</div>
+</body>
+</html>

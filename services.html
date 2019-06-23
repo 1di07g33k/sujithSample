@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl"> 
+
+<table style="border: 2px solid black">
+	<tr>
+		<th style="border: 2px solid black">ID</th>
+		<th style="border: 2px solid black">NAME</th>
+		<th style="border: 2px solid black">EMAIL</th>
+		<th style="border: 2px solid black">PHONE</th>
+		<th style="border: 2px solid black">WEBSITE</th>
+	</tr>
+	<tr ng-repeat="x in myWelcome">
+		<td style="border: 2px solid black">{{x.id}}</td>
+		<td style="border: 2px solid black">{{x.name}}</td>
+		<td style="border: 2px solid black">{{x.email}}</td>
+		<td style="border: 2px solid black">{{x.phone}}</td>
+		<td style="border: 2px solid black">{{x.website}}</td>
+	</tr>
+	
+</table>
+
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope, $http) {
+  $http.get("https://jsonplaceholder.typicode.com/users").then(function (response) {
+      $scope.myWelcome = response.data;
+  },
+  function (response) {
+      alert(response.statusText);
+  });
+});
+</script>
+
+</body>
+</html>

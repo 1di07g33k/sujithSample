@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+<body ng-app='demo_table'>
+	<div ng-controller='tblCtrl'>
+		<table border="1">
+			<thead>
+				<th>ID</th>
+				<th>NAME</th>
+				<th>GENDER</th>
+			</thead>
+			<tbody>
+				<tr ng-repeat='x in users'>
+					<td>{{x.id}}</td>
+					<td>{{x.name | gen : x.gender}}</td>
+					<td>{{x.gender}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</body>
+<script>
+	
+	var app = angular.module('demo_table',[]);
+	
+	app.controller('tblCtrl',function($scope){
+		$scope.users = [
+			{id:001,name:'lmn',gender:'male'},
+			{id:002,name:'fgh',gender:'female'},
+			{id:003,name:'abc',gender:'male'},
+			{id:004,name:'rst',gender:'female'}
+		];
+	});
+	app.filter("gen",function(){
+		return function(name,gender){
+					if(gender+ == "male"){
+						return "Mr"+"."+name;
+					}
+					else{
+						return "Ms"+"."+name;
+					}
+				}	
+	});
+
+</script>
+</html>

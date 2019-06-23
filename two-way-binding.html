@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script type="text/javascript">
+	var app=angular.module('myApp',[]);
+	app.run(function($rootScope){
+		$rootScope.name="AAA";
+	})
+	app.controller('ctrl1',function(){
+
+	})
+	app.controller('ctrl2',function(){
+		
+	})
+</script>
+<body>
+<div ng-app="myApp">
+	<input type="text" ng-value="name">
+	<div ng-controller="ctrl1">
+		<input type="text" ng-value="name">
+	</div>
+	<div ng-controller="ctrl2">
+		<input type="text" ng-value="name">
+	</div>
+</div>
+
+</div>
+
+</body>
+</html>
